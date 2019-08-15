@@ -8,7 +8,7 @@ dev-image:
 	docker build -t al-master-dev .
 
 image:
-	docker build -t al-master-prod .
+	docker build -t al-master .
 
 docker-push-dev:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
