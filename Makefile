@@ -4,10 +4,18 @@ run:
 test:
 	go test ./...
 
+dev-image:
+	docker build -t al-master-dev .
+
 image:
-	docker build -t al-master .
+	docker build -t al-master-prod .
+
+docker-push-dev:
+	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+	docker tag al-master-dev monteymontey/al-master-dev:latest
+	docker push monteymontey/al-master-dev:latest
 
 docker-push:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-	docker tag al-master codealife/al-master:latest
-	docker push codealife/al-master:latest
+	docker tag al-master monteymontey/al-master:latest
+	docker push monteymontey/al-master:latest

@@ -16,11 +16,13 @@ script:
   - make test
 
 deploy:
-  provider: script
-  script: make image docker-push
-  on:
-    branch: master
-    condition: $TRAVIS_PULL_REQUEST = "false"
-
-# seems like it's not deploying if tests fail
-# added condition because we don't want to push the new image already at pull request but wait until it's merged
+  - provider: script
+    script: make image docker-push
+    on:
+      branch: master
+      condition: $TRAVIS_PULL_REQUEST = "false" # we don't want to push the new image already at pull request but wait until it's merged
+  - provider: script
+    script: make image docker-push-dev
+    on:
+      branch: dev
+      condition: $TRAVIS_PULL_REQUEST = "false"
