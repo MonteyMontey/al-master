@@ -10,7 +10,10 @@ env:
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_68016717eb5a_key -iv $encrypted_68016717eb5a_iv
-  -in id_rsa.enc -out ~\id_rsa -d
+  -in id_rsa.enc -out ./id_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./id_rsa
+- ssh-add ./id_rsa
 
 # Explanation on GO111MODULE: Go 1.11 introduced Go modules (go.mod) which gives you the possibility to "go get"
 # packages with a specific version (normally go get always fetches the most recent one). In Go 1.11 the go module
