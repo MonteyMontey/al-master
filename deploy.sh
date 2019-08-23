@@ -7,8 +7,8 @@
 # - (4) and restarts the master service
 
 sudo docker save al-master | gzip > al-master.tar.gz &&
-scp -i ./id_rsa -o StrictHostKeyChecking=no al-master.tar.gz montey@35.207.190.1:/tmp &&
-ssh -i ./id_rsa -o StrictHostKeyChecking=no montey@35.207.190.1 << EOF
+scp -i ./deploy_key -o StrictHostKeyChecking=no al-master.tar.gz montey@35.207.190.1:/tmp &&
+ssh -i ./deploy_key -o StrictHostKeyChecking=no montey@35.207.190.1 << EOF
 cat /tmp/al-master.tar.gz | gunzip | sudo docker load;
 rm /tmp/al-master.tar.gz;
 sudo systemctl restart master
