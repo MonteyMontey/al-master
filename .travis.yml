@@ -28,7 +28,7 @@ deploy:
 
 deploy:
   - provider: script
-    script: make image docker-push-dev bash deploy.sh
+    script: make image docker-push-dev deploy
     on:
       branch: dev
       condition: $TRAVIS_PULL_REQUEST = "false"
