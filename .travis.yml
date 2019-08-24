@@ -24,14 +24,14 @@ script:
 
 deploy:
   - provider: script
-    script: make image docker-push
+    script: make image docker-push deploy
     on:
       branch: master
       condition: $TRAVIS_PULL_REQUEST = "false" # we don't want to push the new image already at pull request but wait until it's merged
 
 deploy:
   - provider: script
-    script: make image docker-push-dev deploy
+    script: make image docker-push-dev deploy-dev
     on:
       branch: dev
       condition: $TRAVIS_PULL_REQUEST = "false"

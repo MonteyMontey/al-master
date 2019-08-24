@@ -17,5 +17,7 @@ docker-push:
 	docker push monteymontey/al-master:latest
 
 deploy:
-	bash deploy.sh
-	
+	bash deploy.sh 35.197.192.211 34.65.119.227 35.233.115.56
+
+deploy-dev:
+	bash deploy.sh 35.246.168.135 35.228.90.154 34.90.109.10
