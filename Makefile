@@ -18,3 +18,4 @@ docker-push:
 
 deploy:
 	bash deploy.sh
+	
