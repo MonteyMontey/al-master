@@ -11,7 +11,6 @@ docker-push-dev:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 	docker tag al-master monteymontey/al-master-dev:latest
 	docker push monteymontey/al-master-dev:latest
-
 docker-push:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 	docker tag al-master monteymontey/al-master:latest
