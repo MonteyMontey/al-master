@@ -24,12 +24,12 @@ script:
 
 deploy:
   - provider: script
-    script: make image docker-push deploy
+    script: make -e TAG=v0.1 image docker-push deploy
     on:
       branch: master
       condition: $TRAVIS_PULL_REQUEST = "false" # we don't want to deploy already at pull request but wait until it's merged
   - provider: script
-    script: make image docker-push-dev deploy-dev
+    script: make -e TAG=v0.2 image docker-push-dev deploy-dev
     on:
       branch: dev
       condition: $TRAVIS_PULL_REQUEST = "false"
