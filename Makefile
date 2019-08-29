@@ -7,17 +7,19 @@ test:
 image:
 	docker build -t al-master .
 
+TAG = latest
+
 docker-push-dev:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-	docker tag al-master monteymontey/al-master-dev:latest
-	docker push monteymontey/al-master-dev:latest
+	docker tag al-master monteymontey/al-master-dev:$(TAG)
+	docker push monteymontey/al-master-dev:$(TAG)
 docker-push:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-	docker tag al-master monteymontey/al-master:latest
-	docker push monteymontey/al-master:latest
+	docker tag al-master monteymontey/al-master:$(TAG)
+	docker push monteymontey/al-master:$(TAG)
 
 deploy:
-	bash deploy.sh 35.246.168.135 34.65.119.227 35.233.115.56
+	bash deploy.sh 35.228.90.154 35.233.115.56 35.197.192.211 
 
 deploy-dev:
-	bash deploy.sh 35.197.192.211 35.228.90.154 34.90.109.10
+	bash deploy.sh 35.246.168.135 34.90.109.10 34.65.119.227
